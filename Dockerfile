@@ -1,7 +1,15 @@
-FROM openjdk:8
+FROM eclipse-temurin:17-jdk-focal
+
+WORKDIR /app
 
 MAINTAINER be
-# RUN mvn -f /app/pom.xml clean package
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:go-offline
 
-COPY ./target/be-0.3.0-SNAPSHOT.jar be-0.3.0-SNAPSHOT.jar
-CMD ["java","-jar","be-0.3.0-SNAPSHOT.jar"]
+COPY . .
+RUN ./mvnw package -DskipTests
+
+#COPY --from=build /build/target/*.jar be-0.0.2-SNAPSHOT.jar
+COPY ./target/be-0.0.2-SNAPSHOT.jar /app
+ENTRYPOINT ["java", "-jar", "/app/be-0.0.2-SNAPSHOT.jar"]
