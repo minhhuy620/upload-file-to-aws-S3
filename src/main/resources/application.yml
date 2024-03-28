@@ -1,13 +1,14 @@
 aws:
-  accessKey: xxxxxx
+  accessKey: xxxx
   bucket:
-    name: xxxxxx
-  secretKey: xxxxxxx
+    name: xxxx
+  secretKey: xxxx
+
 jwt:
   expiration: 1800000
   header: Authorization
   refreshExpirationMs: 3600000
-  secret: mySecret
+  secret: xxxx
 logging:
   level:
     org:
@@ -20,9 +21,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
-    password: xxxxxx
+    password: xxxx
     platform: mysql
-    url: jdbc:mysql://xxx.x.x.x:3306/development
+    url: jdbc:mysql://127.0.0.1:3306/development
     username: root
   jpa:
     hibernate:
@@ -35,5 +36,6 @@ spring:
     dispatch-options-request: true
   servlet:
     multipart:
+      enabled: true
       max-file-size: 50MB
       max-request-size: 50MB
