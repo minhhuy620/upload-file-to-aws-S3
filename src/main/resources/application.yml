@@ -21,7 +21,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
-    password: xxxx
+    password: 123456
     platform: mysql
     url: jdbc:mysql://127.0.0.1:3306/development
     username: root
